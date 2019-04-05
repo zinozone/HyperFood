@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textStyle="bold"
+                android:textSize="@dimen/splash_font_size"
+                android:textColor="@color/colorWhite"/>
+
+            <ImageView
+                android:id="@+id/animation_view"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_groceries"
+                android:layout_marginTop="40dp"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="50dp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/login"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:background="@drawable/btn_border_white"/>
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/register"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/btn_border_white"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
