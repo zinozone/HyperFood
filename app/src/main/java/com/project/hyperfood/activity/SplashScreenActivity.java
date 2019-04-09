@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.firebase.FirebaseApp;
 import com.project.hyperfood.R;
 import com.project.hyperfood.databinding.ActivitySplashScreenBinding;
 import com.project.hyperfood.utils.FontUtil;
@@ -18,6 +19,9 @@ public class SplashScreenActivity extends AppCompatActivity implements  Animator
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FirebaseApp.initializeApp(this);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen);
 
         binding.tvAppName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));

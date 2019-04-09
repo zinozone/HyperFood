@@ -3,10 +3,18 @@
     <string name="login">เข้าสู่ระบบ</string>
     <string name="register">ลงทะเบียน</string>
     <string name="username">ชื่อผู้ใช้</string>
+    <string name="email">อีเมล</string>
     <string name="password">รหัสผ่าน</string>
     <string name="fname">ชื่อ</string>
     <string name="lname">นามสกุล</string>
     <string name="disease">โรคประจำตัว</string>
     <string name="age">อายุ</string>
     <string name="gender">เพศ</string>
+    <string name="validate_register">กรุณากรอกข้อมูลให้ครบถ้วน</string>
+    <string name="register_success">ลงทะเบียนสำเร็จ</string>
+    <string name="register_fail">เกิดข้อผิดพลาดกรุณาลองใหม่อีกครั้ง</string>
+    <string name="select_disease">เลือกโรคประจำตัว</string>
+    <string name="select_gender">เลือกเพศ</string>
+    <string name="male">ชาย</string>
+    <string name="female">หญิง</string>
 </resources>

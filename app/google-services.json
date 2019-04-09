@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "534589422462",
+    "firebase_url": "https://hyper-food-d3b8b.firebaseio.com",
+    "project_id": "hyper-food-d3b8b",
+    "storage_bucket": "hyper-food-d3b8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534589422462:android:d9e2f8328adb26d4",
+        "android_client_info": {
+          "package_name": "com.project.hyperfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534589422462-29nf5at7brkipj8rqi9832fb0pntkji0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.hyperfood",
+            "certificate_hash": "d11bbbb56ea607b6166269142a39d9640a28e877"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsEO9PJbgtRp1qNr0VS7OUQOfYcRwiviA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534589422462-noqkqfcadd9jsbs6s8i6cdmltefou540.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
