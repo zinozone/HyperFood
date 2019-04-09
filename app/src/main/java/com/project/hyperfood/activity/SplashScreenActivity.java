@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.project.hyperfood.R;
 import com.project.hyperfood.databinding.ActivitySplashScreenBinding;
 import com.project.hyperfood.utils.FontUtil;
@@ -35,9 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity implements  Animator
 
     @Override
     public void onAnimationEnd(Animator animation) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+       checkLogin();
     }
 
     @Override
@@ -45,4 +45,25 @@ public class SplashScreenActivity extends AppCompatActivity implements  Animator
 
     @Override
     public void onAnimationRepeat(Animator animation) { }
+
+    private void checkLogin(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null){
+            openMainPage();
+        }else {
+            openReportPage();
+        }
+    }
+
+    private void openMainPage(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void openReportPage(){
+        Intent intent = new Intent(this, ReportActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

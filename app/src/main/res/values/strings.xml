@@ -13,8 +13,13 @@
     <string name="validate_register">กรุณากรอกข้อมูลให้ครบถ้วน</string>
     <string name="register_success">ลงทะเบียนสำเร็จ</string>
     <string name="register_fail">เกิดข้อผิดพลาดกรุณาลองใหม่อีกครั้ง</string>
+    <string name="login_fail">อีเมล หรือรหัสผ่านไม่ถูกต้อง</string>
     <string name="select_disease">เลือกโรคประจำตัว</string>
     <string name="select_gender">เลือกเพศ</string>
     <string name="male">ชาย</string>
     <string name="female">หญิง</string>
+    <string name="loading">Loading</string>
+    <string name="loading_register">กำลังลงทะเบียน</string>
+    <string name="loading_login">กำลังเข้าสู่ระบบ</string>
+    <string name="back_again">"กดปุ่ม Back อีกครั้งเพื่อออกจากแอพพลิเคชั่น"</string>
 </resources>

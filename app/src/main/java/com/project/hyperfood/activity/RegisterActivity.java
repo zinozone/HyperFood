@@ -67,10 +67,13 @@ public class RegisterActivity extends AbstractActivity {
     }
 
     private void register(){
+        createProgressDialog(getString(R.string.loading_register));
+        progressDialog.show();
         mAuth.createUserWithEmailAndPassword(binding.inputEmail.getText().toString().trim(), binding.inputPassword.getText().toString().trim())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             addUser(user);

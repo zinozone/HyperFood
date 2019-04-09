@@ -1,6 +1,7 @@
 package com.project.hyperfood.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
@@ -11,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AbstractActivity extends AppCompatActivity {
+
+    protected ProgressDialog  progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,5 +47,13 @@ public class AbstractActivity extends AppCompatActivity {
     protected void hideSoftKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+    }
+
+    protected void createProgressDialog(String message){
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle(R.string.loading);
+        progressDialog.setMessage(message);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 }

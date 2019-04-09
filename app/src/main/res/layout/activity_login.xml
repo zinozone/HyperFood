@@ -72,11 +72,11 @@
                         android:background="@drawable/edt_bg_white">
 
                         <EditText
-                            android:id="@+id/inputUserId"
+                            android:id="@+id/inputEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/username"
-                            android:inputType="text"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
                             android:background="@color/transparent"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"/>
