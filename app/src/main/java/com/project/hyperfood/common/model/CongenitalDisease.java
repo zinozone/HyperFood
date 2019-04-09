@@ -1,6 +1,4 @@
-package com.project.hyperfood.model;
-
-import java.util.List;
+package com.project.hyperfood.common.model;
 
 public class CongenitalDisease{
 

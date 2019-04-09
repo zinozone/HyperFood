@@ -1,4 +1,4 @@
-package com.project.hyperfood.utils;
+package com.project.hyperfood.common.utils;
 
 import android.content.res.AssetManager;
 import android.graphics.Typeface;

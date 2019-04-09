@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.project.hyperfood.R;
 import com.project.hyperfood.databinding.ActivityMainBinding;
-import com.project.hyperfood.utils.FontUtil;
+import com.project.hyperfood.common.utils.FontUtil;
 
 public class MainActivity extends AbstractActivity {
 

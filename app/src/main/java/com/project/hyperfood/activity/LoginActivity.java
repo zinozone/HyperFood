@@ -3,7 +3,6 @@ package com.project.hyperfood.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -12,7 +11,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.project.hyperfood.R;
 import com.project.hyperfood.databinding.ActivityLoginBinding;
-import com.project.hyperfood.utils.EmailUtil;
+import com.project.hyperfood.common.utils.EmailUtil;
 
 import androidx.databinding.DataBindingUtil;
 

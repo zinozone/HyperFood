@@ -1,4 +1,4 @@
-package com.project.hyperfood.utils;
+package com.project.hyperfood.common.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -16,10 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.hyperfood.R;
+import com.project.hyperfood.common.model.CongenitalDisease;
+import com.project.hyperfood.common.model.User;
 import com.project.hyperfood.databinding.ActivityRegisterBinding;
-import com.project.hyperfood.model.CongenitalDisease;
-import com.project.hyperfood.model.User;
-import com.project.hyperfood.utils.EmailUtil;
+import com.project.hyperfood.common.utils.EmailUtil;
 
 import java.util.ArrayList;
 import java.util.List;

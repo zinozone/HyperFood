@@ -1,4 +1,4 @@
-package com.project.hyperfood.model;
+package com.project.hyperfood.common.model;
 
 public class User {
 

@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.hyperfood.R;
 import com.project.hyperfood.databinding.ActivitySplashScreenBinding;
-import com.project.hyperfood.utils.FontUtil;
+import com.project.hyperfood.common.utils.FontUtil;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
