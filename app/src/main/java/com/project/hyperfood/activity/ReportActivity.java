@@ -1,5 +1,6 @@
 package com.project.hyperfood.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,6 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.project.hyperfood.R;
 import com.project.hyperfood.common.utils.DatePickerFragment;
 import com.project.hyperfood.common.utils.DateTimeUtils;
@@ -44,6 +44,10 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         binding.tvDate.setText(DateTimeUtils.getCurrentDate());
         binding.btnDate.setOnClickListener(v -> selectDate());
         binding.tvDate.setOnClickListener(v -> selectDate());
+        binding.btnSetting.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), SettingActivity.class));
+            overridePendingTransitionEnter();
+        });
 
         configChart();
         setData();
