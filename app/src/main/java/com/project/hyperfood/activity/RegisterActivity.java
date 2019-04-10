@@ -27,10 +27,11 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
+import static com.project.hyperfood.application.HyperFoodApplication.DISEASE;
+import static com.project.hyperfood.application.HyperFoodApplication.USER;
+
 public class RegisterActivity extends AbstractActivity {
 
-    public static final String USER = "users";
-    public static final String DISEASE = "congenitalDisease";
     private ActivityRegisterBinding binding;
 
     private FirebaseAuth mAuth;
