@@ -146,7 +146,7 @@ public class RegisterActivity extends AbstractActivity {
 
     private void setGender(){
         List<String> stringList = new ArrayList<>();
-        stringList.add(getString(R.string.select_disease));
+        stringList.add(getString(R.string.select_gender));
         stringList.add(getString(R.string.male));
         stringList.add(getString(R.string.female));
 
