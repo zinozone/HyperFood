@@ -7,7 +7,6 @@ import com.project.hyperfood.R;
 import com.project.hyperfood.activity.FoodActivity;
 import com.project.hyperfood.common.model.Food;
 import com.project.hyperfood.common.preferences.HPF;
-import com.project.hyperfood.common.utils.FontUtil;
 import com.project.hyperfood.databinding.ItemSelectFoodBinding;
 
 import androidx.core.content.ContextCompat;
@@ -25,10 +24,6 @@ public class FoodViewHolder extends ItemViewHolder<Food>{
     public void bindingData(Food food, int position) {
         super.bindingData(food, position);
 
-        binding.tvFood.setTypeface(FontUtil.getFont(getContext().getAssets(), FontUtil.LAMMOON_REGULAR));
-        binding.tvLimit.setTypeface(FontUtil.getFont(getContext().getAssets(), FontUtil.LAMMOON_REGULAR));
-        binding.tvType.setTypeface(FontUtil.getFont(getContext().getAssets(), FontUtil.LAMMOON_REGULAR));
-        binding.tvContainer.setTypeface(FontUtil.getFont(getContext().getAssets(), FontUtil.LAMMOON_REGULAR));
         binding.tvFood.setText(food.getFoodName());
 
         if (food.getFoodType().equals(getContext().getString(R.string.fruit))){
@@ -43,13 +38,13 @@ public class FoodViewHolder extends ItemViewHolder<Food>{
 
         if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.hypertension))){
             binding.tvType.setText(getContext().getString(R.string.soduim));
-            binding.tvLimit.setText(food.getSoduim() + " มิลลิกรัม");
+            binding.tvLimit.setText(food.getSoduim() + " " + getContext().getString(R.string.mili_grams));
         }else if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.obesity))){
             binding.tvType.setText(getContext().getString(R.string.fat));
-            binding.tvLimit.setText(food.getFat() + " กรัม");
+            binding.tvLimit.setText(food.getFat() + " " + getContext().getString(R.string.grams));
         }else {
             binding.tvType.setText(getContext().getString(R.string.carbohydrate));
-            binding.tvLimit.setText(food.getCarbohydrate() + " กรัม");
+            binding.tvLimit.setText(food.getCarbohydrate() +  " " + getContext().getString(R.string.grams));
         }
         binding.tvContainer.setText("ต่อ 1 " +food.getContainer());
 

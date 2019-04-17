@@ -4,11 +4,17 @@ import android.os.Bundle;
 
 import com.project.hyperfood.R;
 import com.project.hyperfood.common.model.Food;
-import com.project.hyperfood.common.utils.FontUtil;
+import com.project.hyperfood.common.utils.DateTimeUtils;
 import com.project.hyperfood.databinding.ActivityFoodBinding;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+
+import static com.project.hyperfood.common.utils.DateTimeUtils.EVENING;
+import static com.project.hyperfood.common.utils.DateTimeUtils.MORNING;
+import static com.project.hyperfood.common.utils.DateTimeUtils.NIGHT;
+import static com.project.hyperfood.common.utils.DateTimeUtils.NOON;
 
 public class FoodActivity extends AbstractActivity{
 
@@ -16,20 +22,90 @@ public class FoodActivity extends AbstractActivity{
 
     private ActivityFoodBinding binding;
     private Food food;
+    private int dayTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_food);
-
         food = getIntent().getParcelableExtra(EXTRA_FOOD);
         if (food != null){
             setData();
         }
+
+        setClickEvent();
+        setDayTime();
     }
 
     private void setData(){
         binding.tvFoodName.setText(food.getFoodName());
-        binding.tvFoodName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
+        binding.tvGrams.setText(food.getGrams() + " " + getString(R.string.grams));
+        binding.tvSodiumGrams.setText(food.getSoduim() + " " + getString(R.string.mili_grams));
+        binding.tvFatGrams.setText(food.getFat() + " " + getString(R.string.grams));
+        binding.tvCaboGrams.setText(food.getCarbohydrate() + " " + getString(R.string.grams));
+        binding.tvSugarGrams.setText(food.getSugars() + " " + getString(R.string.grams));
+        binding.tvProteinGrams.setText(food.getProtein() + " " + getString(R.string.grams));
+    }
+
+    private void setClickEvent(){
+        binding.btnMorning.setOnClickListener(v -> setMorning());
+        binding.btnNoon.setOnClickListener(v -> setNoon());
+        binding.btnEvening.setOnClickListener(v -> setEvening());
+        binding.btnNight.setOnClickListener(v -> setNight());
+        binding.btnBack.setOnClickListener(v -> onBackPressed());
+        binding.tvMorning.setOnClickListener(v -> setMorning());
+        binding.tvNoon.setOnClickListener(v -> setNoon());
+        binding.tvEvening.setOnClickListener(v -> setEvening());
+        binding.tvnight.setOnClickListener(v -> setNight());
+    }
+
+    private void setDayTime(){
+        switch (DateTimeUtils.getDayTime()){
+            case MORNING:
+                setMorning();
+                break;
+            case NOON:
+                setNoon();
+                break;
+            case EVENING:
+                setEvening();
+                break;
+            case NIGHT:
+                setNight();
+                break;
+            default:
+                setMorning();
+        }
+    }
+
+    private void clearResource(){
+        binding.btnMorning.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_morning_black));
+        binding.btnNoon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_noon_black));
+        binding.btnEvening.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_sunrise_black));
+        binding.btnNight.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_moon_black));
+    }
+
+    private void setMorning(){
+        dayTime = MORNING;
+        clearResource();
+        binding.btnMorning.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_morning));
+    }
+
+    private void setNoon(){
+        dayTime = NOON;
+        clearResource();
+        binding.btnNoon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_noon));
+    }
+
+    private void setEvening(){
+        dayTime = EVENING;
+        clearResource();
+        binding.btnEvening.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_sunrise));
+    }
+
+    private void setNight(){
+        dayTime = NIGHT;
+        clearResource();
+        binding.btnNight.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_moon));
     }
 }

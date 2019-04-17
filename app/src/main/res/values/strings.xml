@@ -35,4 +35,14 @@
     <string name="side_dish">sideDish</string>
     <string name="sweets">sweets</string>
     <string name="fat">ไขมัน</string>
+    <string name="desc_food">น้ำหนักสุทธิที่บริโภค</string>
+    <string name="desc_nutrition">ข้อมูลโภชนาการ (Nutrition Information)</string>
+    <string name="sugar">น้ำตาล</string>
+    <string name="protein">โปรตีน</string>
+    <string name="morning">เช้า</string>
+    <string name="noon">เที่ยง</string>
+    <string name="evening">เย็น</string>
+    <string name="night">ดึก</string>
+    <string name="grams">กรัม</string>
+    <string name="mili_grams">มิลลิกรัม</string>
 </resources>

@@ -28,13 +28,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-
                     <TextView
                         android:id="@+id/tvFoodName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="25sp"
+                        android:fontFamily="@font/lamoon_bold"
                         android:textColor="@color/colorWhite"/>
 
 
@@ -55,6 +55,357 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:background="@color/colorGray"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvDescFood"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:text="@string/desc_food"/>
+
+                                <TextView
+                                    android:id="@+id/tvGrams"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:layout_marginLeft="20dp"
+                                    android:text="145 กรัม"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvDescNutrition"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/lamoon_regular"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/desc_nutrition"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="2"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:id="@+id/tvSodium"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:textColor="@color/colorBlack"
+                                    android:text="@string/soduim"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_weight="1"/>
+
+                                <TextView
+                                    android:id="@+id/tvSodiumGrams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:text="1 กรัม"
+                                    android:layout_marginEnd="40dp"
+                                    android:gravity="right"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="2"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:id="@+id/tvFat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:textColor="@color/colorBlack"
+                                    android:text="@string/fat"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_weight="1"/>
+
+                                <TextView
+                                    android:id="@+id/tvFatGrams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:text="1 กรัม"
+                                    android:layout_marginEnd="40dp"
+                                    android:gravity="right"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="2"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:id="@+id/tvCabo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:textColor="@color/colorBlack"
+                                    android:text="@string/carbohydrate"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_weight="1"/>
+
+                                <TextView
+                                    android:id="@+id/tvCaboGrams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:text="1 กรัม"
+                                    android:layout_marginEnd="40dp"
+                                    android:gravity="right"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="2"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:id="@+id/tvSugar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:textColor="@color/colorBlack"
+                                    android:text="@string/sugar"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_weight="1"/>
+
+                                <TextView
+                                    android:id="@+id/tvSugarGrams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:text="1 กรัม"
+                                    android:layout_marginEnd="40dp"
+                                    android:gravity="right"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="2"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:id="@+id/tvProtein"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:textColor="@color/colorBlack"
+                                    android:text="@string/protein"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_weight="1"/>
+
+                                <TextView
+                                    android:id="@+id/tvProteinGrams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:text="1 กรัม"
+                                    android:layout_marginEnd="40dp"
+                                    android:gravity="right"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="50dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_weight="4">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:layout_weight="1">
+
+                                    <ImageButton
+                                        android:id="@+id/btnMorning"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:scaleType="fitXY"
+                                        android:background="@null"
+                                        android:src="@drawable/ic_morning_black"/>
+
+                                    <TextView
+                                        android:id="@+id/tvMorning"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/lamoon_regular"
+                                        android:padding="5dp"
+                                        android:text="@string/morning"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:layout_weight="1">
+
+                                    <ImageButton
+                                        android:id="@+id/btnNoon"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:scaleType="fitXY"
+                                        android:background="@null"
+                                        android:src="@drawable/ic_noon_black"/>
+
+                                    <TextView
+                                        android:id="@+id/tvNoon"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="18sp"
+                                        android:padding="5dp"
+                                        android:textColor="@color/colorBlack"
+                                        android:fontFamily="@font/lamoon_regular"
+                                        android:text="@string/noon"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:layout_weight="1">
+
+                                    <ImageButton
+                                        android:id="@+id/btnEvening"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:scaleType="fitXY"
+                                        android:background="@null"
+                                        android:src="@drawable/ic_sunrise_black"/>
+
+                                    <TextView
+                                        android:id="@+id/tvEvening"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="18sp"
+                                        android:padding="5dp"
+                                        android:textColor="@color/colorBlack"
+                                        android:fontFamily="@font/lamoon_regular"
+                                        android:text="@string/evening"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:layout_weight="1">
+
+                                    <ImageButton
+                                        android:id="@+id/btnNight"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:padding="5dp"
+                                        android:scaleType="fitXY"
+                                        android:background="@null"
+                                        android:src="@drawable/ic_moon_black" />
+
+                                    <TextView
+                                        android:id="@+id/tvnight"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="18sp"
+                                        android:padding="5dp"
+                                        android:textColor="@color/colorBlack"
+                                        android:fontFamily="@font/lamoon_regular"
+                                        android:text="@string/night"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </ScrollView>
 
         </LinearLayout>
 
