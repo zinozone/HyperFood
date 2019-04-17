@@ -25,6 +25,7 @@ public class FoodTypeViewHolder extends ItemViewHolder<FoodType>{
         binding.getRoot().setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SelectFoodActivity.class);
             intent.putExtra(SelectFoodActivity.EXTRA_FOOD_TYPE, foodType.getFoodType());
+            intent.putExtra(SelectFoodActivity.EXTRA_FOOD_TYPE_NAME, foodType.getFoodTypeName());
             getContext().startActivity(intent);
         });
     }

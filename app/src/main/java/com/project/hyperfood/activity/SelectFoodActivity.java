@@ -31,10 +31,11 @@ import static com.project.hyperfood.application.HyperFoodApplication.FOOD;
 public class SelectFoodActivity extends AbstractActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     public static final String EXTRA_FOOD_TYPE = "extra-food-type";
+    public static final String EXTRA_FOOD_TYPE_NAME = "extra-food-type-name";
 
     private ActivitySelectFoodBinding binding;
     private FoodAdapter adapter;
-    private String foodType;
+    private String foodType, foodTypeName;
     private List<Food> data;
 
     @Override
@@ -50,6 +51,8 @@ public class SelectFoodActivity extends AbstractActivity implements SwipeRefresh
         binding.refreshLayout.setOnRefreshListener(this);
 
         foodType = getIntent().getStringExtra(EXTRA_FOOD_TYPE);
+        foodTypeName = getIntent().getStringExtra(EXTRA_FOOD_TYPE_NAME);
+        binding.tvFoodType.setText(foodTypeName);
 
         adapter = new FoodAdapter();
         binding.rvFood.setAdapter(adapter);
