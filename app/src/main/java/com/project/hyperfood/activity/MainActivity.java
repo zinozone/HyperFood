@@ -18,7 +18,7 @@ public class MainActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        binding.tvAppName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        binding.tvAppName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
 
         binding.btnLogin.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), LoginActivity.class));

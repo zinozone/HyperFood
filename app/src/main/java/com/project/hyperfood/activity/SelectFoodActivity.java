@@ -42,7 +42,7 @@ public class SelectFoodActivity extends AbstractActivity implements SwipeRefresh
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_food);
 
-        binding.tvTitle.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        binding.tvTitle.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
         binding.tvTitle.setText(HyperFoodApplication.menuTitle);
         binding.edtSearch.addTextChangedListener(textWatcher);
         binding.btnBack.setOnClickListener(v -> onBackPressed());
@@ -67,6 +67,7 @@ public class SelectFoodActivity extends AbstractActivity implements SwipeRefresh
                 List<Food> foodTypes = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Food food = snapshot.getValue(Food.class);
+                    food.setFoodType(foodType);
                     foodTypes.add(food);
                 }
 

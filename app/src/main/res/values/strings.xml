@@ -22,7 +22,17 @@
     <string name="loading_register">กำลังลงทะเบียน</string>
     <string name="loading_login">กำลังเข้าสู่ระบบ</string>
     <string name="setting">ตั้งค่า</string>
-    <string name="back_again">"กดปุ่ม Back อีกครั้งเพื่อออกจากแอพพลิเคชั่น"</string>
-    <string name="recommend_food">"อาหารแนะนำสำหรับคุณ"</string>
-    <string name="all_food">"รายการอาหารทั้งหมด"</string>
+    <string name="back_again">กดปุ่ม Back อีกครั้งเพื่อออกจากแอพพลิเคชั่น</string>
+    <string name="recommend_food">อาหารแนะนำสำหรับคุณ</string>
+    <string name="all_food">รายการอาหารทั้งหมด</string>
+    <string name="diabetes">เบาหวาน</string>
+    <string name="obesity">อ้วน</string>
+    <string name="hypertension">ความดัน</string>
+    <string name="soduim">โซเดียม</string>
+    <string name="carbohydrate">คาร์โบไฮเดรต</string>
+    <string name="fast_food">fastFood</string>
+    <string name="fruit">fruit</string>
+    <string name="side_dish">sideDish</string>
+    <string name="sweets">sweets</string>
+    <string name="fat">ไขมัน</string>
 </resources>

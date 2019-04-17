@@ -1,6 +1,9 @@
 package com.project.hyperfood.common.model;
 
-public class Food {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Food implements Parcelable {
 
     private String id;
     private String carbohydrate;
@@ -8,10 +11,40 @@ public class Food {
     private String fat;
     private String foodName;
     private String grams;
-    private String protien;
+    private String protein;
     private String serving;
     private String soduim;
     private String sugars;
+    private String foodType;
+
+    public Food() {
+    }
+
+    protected Food(Parcel in) {
+        id = in.readString();
+        carbohydrate = in.readString();
+        container = in.readString();
+        fat = in.readString();
+        foodName = in.readString();
+        grams = in.readString();
+        protein = in.readString();
+        serving = in.readString();
+        soduim = in.readString();
+        sugars = in.readString();
+        foodType = in.readString();
+    }
+
+    public static final Creator<Food> CREATOR = new Creator<Food>() {
+        @Override
+        public Food createFromParcel(Parcel in) {
+            return new Food(in);
+        }
+
+        @Override
+        public Food[] newArray(int size) {
+            return new Food[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -61,12 +94,12 @@ public class Food {
         this.grams = grams;
     }
 
-    public String getProtien() {
-        return protien;
+    public String getProtein() {
+        return protein;
     }
 
-    public void setProtien(String protien) {
-        this.protien = protien;
+    public void setProtein(String protein) {
+        this.protein = protein;
     }
 
     public String getServing() {
@@ -91,5 +124,33 @@ public class Food {
 
     public void setSugars(String sugars) {
         this.sugars = sugars;
+    }
+
+    public String getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(String foodType) {
+        this.foodType = foodType;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(carbohydrate);
+        dest.writeString(container);
+        dest.writeString(fat);
+        dest.writeString(foodName);
+        dest.writeString(grams);
+        dest.writeString(protein);
+        dest.writeString(serving);
+        dest.writeString(soduim);
+        dest.writeString(sugars);
+        dest.writeString(foodType);
     }
 }

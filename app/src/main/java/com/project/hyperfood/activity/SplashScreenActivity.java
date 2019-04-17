@@ -36,7 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity implements  Animator
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen);
 
-        binding.tvAppName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        binding.tvAppName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
         binding.animationView.addAnimatorListener(this);
         binding.animationView.playAnimation();
 

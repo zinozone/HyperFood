@@ -21,7 +21,7 @@ public class SettingActivity extends AbstractActivity{
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_settings);
 
-        binding.tvSetting.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        binding.tvSetting.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
         binding.btnBack.setOnClickListener(v -> onBackPressed());
         binding.btnSignOut.setOnClickListener(v ->{
             FirebaseAuth.getInstance().signOut();

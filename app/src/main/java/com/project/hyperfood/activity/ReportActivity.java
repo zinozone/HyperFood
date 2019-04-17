@@ -39,9 +39,9 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_report);
 
-        binding.tvAppName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
-        binding.btnRecommend.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
-        binding.btnSave.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        binding.tvAppName.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
+        binding.btnRecommend.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
+        binding.btnSave.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
         binding.tvDate.setText(DateTimeUtils.getCurrentDate());
 
         setClickEvent();
@@ -74,7 +74,7 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         binding.chartView.setExtraOffsets(5, 10, 5, 5);
 
         binding.chartView.setDragDecelerationFrictionCoef(0.95f);
-        binding.chartView.setCenterTextTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        binding.chartView.setCenterTextTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
         binding.chartView.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
 
         binding.chartView.setDrawHoleEnabled(true);
@@ -134,7 +134,7 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         PieData data = new PieData(dataSet);
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.BLACK);
-        data.setValueTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        data.setValueTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
         data.setValueTextSize(18);
         data.setValueFormatter(new PercentFormatter());
         data.setDrawValues(false);

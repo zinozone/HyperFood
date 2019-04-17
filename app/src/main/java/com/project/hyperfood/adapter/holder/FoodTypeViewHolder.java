@@ -20,7 +20,7 @@ public class FoodTypeViewHolder extends ItemViewHolder<FoodType>{
     public void bindingData(FoodType foodType, int position) {
         super.bindingData(foodType, position);
 
-        binding.tvFoodType.setTypeface(FontUtil.getFont(getContext().getAssets(), FontUtil.LAMMOON));
+        binding.tvFoodType.setTypeface(FontUtil.getFont(getContext().getAssets(), FontUtil.LAMMOON_REGULAR));
         binding.tvFoodType.setText(foodType.getFoodTypeName());
         binding.getRoot().setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SelectFoodActivity.class);

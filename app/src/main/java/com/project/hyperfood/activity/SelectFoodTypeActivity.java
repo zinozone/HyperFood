@@ -36,7 +36,7 @@ public class SelectFoodTypeActivity extends AbstractActivity implements SwipeRef
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_food_type);
 
-        binding.tvTitle.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
+        binding.tvTitle.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
         binding.tvTitle.setText(HyperFoodApplication.menuTitle);
         binding.btnBack.setOnClickListener(v -> onBackPressed());
         binding.rvFoodType.setLayoutManager(new LinearLayoutManager(getContext()));
