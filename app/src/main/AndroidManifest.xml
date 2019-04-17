@@ -25,6 +25,8 @@
         <activity android:name=".activity.LoginActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.ReportActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.SettingActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.SelectFoodTypeActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.SelectFoodActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

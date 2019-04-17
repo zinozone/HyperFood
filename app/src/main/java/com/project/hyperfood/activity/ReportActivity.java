@@ -16,6 +16,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.project.hyperfood.R;
+import com.project.hyperfood.application.HyperFoodApplication;
 import com.project.hyperfood.common.utils.DatePickerFragment;
 import com.project.hyperfood.common.utils.DateTimeUtils;
 import com.project.hyperfood.common.utils.FontUtil;
@@ -42,15 +43,29 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         binding.btnRecommend.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
         binding.btnSave.setTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON));
         binding.tvDate.setText(DateTimeUtils.getCurrentDate());
+
+        setClickEvent();
+        configChart();
+        setData();
+    }
+
+    private void setClickEvent(){
         binding.btnDate.setOnClickListener(v -> selectDate());
         binding.tvDate.setOnClickListener(v -> selectDate());
         binding.btnSetting.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), SettingActivity.class));
             overridePendingTransitionEnter();
         });
-
-        configChart();
-        setData();
+        binding.btnRecommend.setOnClickListener(v -> {
+            HyperFoodApplication.menuTitle = getString(R.string.recommend_food);
+            startActivity(new Intent(getContext(), SelectFoodTypeActivity.class));
+            overridePendingTransitionEnter();
+        });
+        binding.btnSave.setOnClickListener(v -> {
+            HyperFoodApplication.menuTitle = getString(R.string.all_food);
+            startActivity(new Intent(getContext(), SelectFoodTypeActivity.class));
+            overridePendingTransitionEnter();
+        });
     }
 
     private void configChart(){
