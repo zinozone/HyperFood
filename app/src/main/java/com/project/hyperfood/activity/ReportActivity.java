@@ -33,7 +33,6 @@ import com.project.hyperfood.databinding.ActivityReportBinding;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -206,31 +205,23 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentValue = 0;
 
-                List<Food> morningFood = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_morning)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    morningFood.add(food);
                     currentValue += getFoodValue(food);
                 }
 
-                List<Food> noonFood = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_noon)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    noonFood.add(food);
                     currentValue += getFoodValue(food);
                 }
 
-                List<Food> eveningFood = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_evening)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    eveningFood.add(food);
                     currentValue += getFoodValue(food);
                 }
 
-                List<Food> nightFood = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_night)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    nightFood.add(food);
                     currentValue += getFoodValue(food);
                 }
 
