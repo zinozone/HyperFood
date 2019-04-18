@@ -185,7 +185,10 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
+        Intent intent = new Intent(getContext(), EatDetailActivity.class);
+        intent.putExtra(EatDetailActivity.EXTRA_DATE, binding.tvDate.getText().toString());
+        startActivity(intent);
+        overridePendingTransitionEnter();
     }
 
     @Override
