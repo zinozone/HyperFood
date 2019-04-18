@@ -21,6 +21,16 @@ public class DateTimeUtils {
         return format.format(new Date());
     }
 
+    public static String getDateSaveFood(){
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        return format.format(new Date());
+    }
+
+    public static String getTimeSaveFood(){
+        SimpleDateFormat format = new SimpleDateFormat("HHmmss");
+        return format.format(new Date());
+    }
+
     public static int getDayTime(){
         SimpleDateFormat format = new SimpleDateFormat("HH");
         int hour = Integer.parseInt(format.format(new Date()));

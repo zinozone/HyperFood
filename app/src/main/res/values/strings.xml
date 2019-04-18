@@ -45,4 +45,12 @@
     <string name="night">ดึก</string>
     <string name="grams">กรัม</string>
     <string name="mili_grams">มิลลิกรัม</string>
+    <string name="save_food">บันทึกรายการ</string>
+    <string name="cancel_food">ยกเลิกรายการ</string>
+    <string name="save_success">บันทึกรายการสำเร็จ</string>
+    <string name="save_fail">บันทึกรายการไม่สำเร็จ กรุราลองอีกครั้ง</string>
+    <string name="txt_morning">morning</string>
+    <string name="txt_noon">noon</string>
+    <string name="txt_evening">evening</string>
+    <string name="txt_night">night</string>
 </resources>
