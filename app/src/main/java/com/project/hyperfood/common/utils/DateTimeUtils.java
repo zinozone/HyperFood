@@ -1,5 +1,6 @@
 package com.project.hyperfood.common.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,6 +25,18 @@ public class DateTimeUtils {
     public static String getDateSaveFood(){
         SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
         return format.format(new Date());
+    }
+
+    public static String getDateSaveFood(String strDate){
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat returnFormat = new SimpleDateFormat("ddMMyyyy");
+        try {
+            Date date = format.parse(strDate);
+            return returnFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return returnFormat.format(new Date());
     }
 
     public static String getTimeSaveFood(){

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="sodium">2000</integer>
+    <integer name="fat">65</integer>
+    <integer name="carbohydrate">135</integer>
+</resources>

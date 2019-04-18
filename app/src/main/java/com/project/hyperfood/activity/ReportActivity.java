@@ -15,8 +15,17 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.project.hyperfood.R;
 import com.project.hyperfood.application.HyperFoodApplication;
+import com.project.hyperfood.common.model.Food;
+import com.project.hyperfood.common.preferences.HPF;
 import com.project.hyperfood.common.utils.DatePickerFragment;
 import com.project.hyperfood.common.utils.DateTimeUtils;
 import com.project.hyperfood.common.utils.FontUtil;
@@ -24,14 +33,18 @@ import com.project.hyperfood.databinding.ActivityReportBinding;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+
+import static com.project.hyperfood.application.HyperFoodApplication.USER_FOOD;
 
 public class ReportActivity extends AbstractActivity implements OnChartValueSelectedListener {
 
     private ActivityReportBinding binding;
-
+    private float currentValue = 0;
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -46,7 +59,7 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
 
         setClickEvent();
         configChart();
-        setData();
+        getFood();
     }
 
     private void setClickEvent(){
@@ -83,8 +96,8 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         binding.chartView.setTransparentCircleColor(Color.WHITE);
         binding.chartView.setTransparentCircleAlpha(110);
 
-        binding.chartView.setHoleRadius(58f);
-        binding.chartView.setTransparentCircleRadius(61f);
+        binding.chartView.setHoleRadius(17f);
+        binding.chartView.setTransparentCircleRadius(20f);
 
         binding.chartView.setDrawCenterText(true);
 
@@ -112,8 +125,8 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
 
     private void setData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(20, "เหมาสม"));
-        entries.add(new PieEntry(50, "ไม่เหมาะสม"));
+        entries.add(new PieEntry(getLimit(), "เหมาสม"));
+        entries.add(new PieEntry(currentValue, "ไม่เหมาะสม"));
 
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setSliceSpace(3f);
@@ -147,7 +160,10 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
 
     protected void selectDate(){
         DatePickerFragment datePickerFragment = new DatePickerFragment();
-        datePickerFragment.setListener(date -> binding.tvDate.setText(date));
+        datePickerFragment.setListener(date -> {
+            binding.tvDate.setText(date);
+            getFood();
+        });
         datePickerFragment.show(getFragmentManager(), "");
     }
 
@@ -175,5 +191,77 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
     @Override
     public void onNothingSelected() {
 
+    }
+
+    private void getFood(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference foodRef = FirebaseDatabase.getInstance().getReference(USER_FOOD)
+                .child(user.getUid())
+                .child(DateTimeUtils.getDateSaveFood(binding.tvDate.getText().toString()));
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                currentValue = 0;
+
+                List<Food> morningFood = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_morning)).getChildren()){
+                    Food food = snapshot.getValue(Food.class);
+                    morningFood.add(food);
+                    currentValue += getFoodValue(food);
+                }
+
+                List<Food> noonFood = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_noon)).getChildren()){
+                    Food food = snapshot.getValue(Food.class);
+                    noonFood.add(food);
+                    currentValue += getFoodValue(food);
+                }
+
+                List<Food> eveningFood = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_evening)).getChildren()){
+                    Food food = snapshot.getValue(Food.class);
+                    eveningFood.add(food);
+                    currentValue += getFoodValue(food);
+                }
+
+                List<Food> nightFood = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_night)).getChildren()){
+                    Food food = snapshot.getValue(Food.class);
+                    nightFood.add(food);
+                    currentValue += getFoodValue(food);
+                }
+
+                setData();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                currentValue = 0;
+                setData();
+                Toast.makeText(getContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        };
+        foodRef.addListenerForSingleValueEvent(valueEventListener);
+    }
+
+    private int getLimit(){
+        if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.hypertension))){
+            return getResources().getInteger(R.integer.sodium);
+        }else if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.obesity))){
+            return getResources().getInteger(R.integer.fat);
+        }else {
+            return getResources().getInteger(R.integer.carbohydrate);
+        }
+    }
+
+    private float getFoodValue(Food food){
+        if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.hypertension))){
+            return Float.parseFloat(food.getSoduim());
+        }else if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.obesity))){
+            return Float.parseFloat(food.getFat());
+        }else {
+            return Float.parseFloat(food.getCarbohydrate());
+        }
     }
 }
