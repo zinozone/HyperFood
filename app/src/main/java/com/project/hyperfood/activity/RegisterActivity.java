@@ -79,7 +79,7 @@ public class RegisterActivity extends AbstractActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             addUser(user);
                         } else {
-                            Toast.makeText(getContext(), R.string.register_fail, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
