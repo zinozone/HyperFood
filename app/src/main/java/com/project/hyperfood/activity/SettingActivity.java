@@ -29,5 +29,9 @@ public class SettingActivity extends AbstractActivity{
             startActivity(new Intent(getContext(), SplashScreenActivity.class));
             finish();
         });
+        binding.btnUser.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), ProfileActivity.class));
+            overridePendingTransitionEnter();
+        });
     }
 }
