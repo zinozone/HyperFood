@@ -21,7 +21,13 @@ import com.rd.animation.type.AnimationType;
 public class TutorialActivity extends AbstractActivity{
 
     private ActivityTutorialBinding binding;
-    private int[] tutorial = {};
+    private int[] tutorial = {
+            R.drawable.tutorial_1,
+            R.drawable.tutorial_2,
+            R.drawable.tutorial_3,
+            R.drawable.tutorial_4,
+            R.drawable.tutorial_5
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +42,7 @@ public class TutorialActivity extends AbstractActivity{
         binding.pageIndicatorView.setAnimationDuration(300);
         binding.pageIndicatorView.setAnimationType(AnimationType.WORM);
         binding.pageIndicatorView.setInteractiveAnimation(true);
-        binding.pageIndicatorView.setSelectedColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        binding.pageIndicatorView.setSelectedColor(ContextCompat.getColor(getContext(), R.color.colorWhite));
         binding.pageIndicatorView.setUnselectedColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
     }
 

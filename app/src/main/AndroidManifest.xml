@@ -30,6 +30,7 @@
         <activity android:name=".activity.FoodActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.EatDetailActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.ProfileActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.TutorialActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

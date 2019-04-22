@@ -33,5 +33,9 @@ public class SettingActivity extends AbstractActivity{
             startActivity(new Intent(getContext(), ProfileActivity.class));
             overridePendingTransitionEnter();
         });
+        binding.btnTutorial.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), TutorialActivity.class));
+            overridePendingTransitionEnter();
+        });
     }
 }
