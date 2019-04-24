@@ -34,6 +34,9 @@ public class ReportActivity extends AbstractActivity{
 
     private ActivityReportBinding binding;
     private boolean doubleBackToExitPressedOnce = false;
+    private  float sodium = 0;
+    private float cabo = 0;
+    private float kcal = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -115,9 +118,9 @@ public class ReportActivity extends AbstractActivity{
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                float sodium = 0;
-                float cabo = 0;
-                float kcal = 0;
+                sodium = 0;
+                cabo = 0;
+                kcal = 0;
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_morning)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
@@ -180,8 +183,8 @@ public class ReportActivity extends AbstractActivity{
 
     private void updateValue(){
         DecimalFormat df = new DecimalFormat("#.##");
-        binding.caboValue.setText(String.format("%s/%.0f %s", df.format(binding.progressCabo.getProgress()), binding.progressCabo.getMax(), getString(R.string.carbohydrate)));
-        binding.sodiumValue.setText(String.format("%s/%.0f %s", df.format(binding.progressSodium.getProgress()), binding.progressSodium.getMax(), getString(R.string.mili_gram)));
-        binding.kcalValue.setText(String.format("%s/%.0f %s", df.format(binding.progressKcal.getProgress()), binding.progressKcal.getMax(), getString(R.string.kilo_cal)));
+        binding.caboValue.setText(String.format("%s/%.0f %s", df.format(cabo), binding.progressCabo.getMax(), getString(R.string.carbohydrate)));
+        binding.sodiumValue.setText(String.format("%s/%.0f %s", df.format(sodium), binding.progressSodium.getMax(), getString(R.string.mili_gram)));
+        binding.kcalValue.setText(String.format("%s/%.0f %s", df.format(kcal), binding.progressKcal.getMax(), getString(R.string.kilo_cal)));
     }
 }
