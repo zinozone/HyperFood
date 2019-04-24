@@ -76,6 +76,10 @@ public class ReportActivity extends AbstractActivity{
         binding.progressCabo.setOnClickListener(v -> openEatDetail());
         binding.progressKcal.setOnClickListener(v -> openEatDetail());
         binding.progressSodium.setOnClickListener(v -> openEatDetail());
+        binding.btnNotification.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), NotificationActivity.class));
+            overridePendingTransitionEnter();
+        });
     }
 
     protected void selectDate(){
