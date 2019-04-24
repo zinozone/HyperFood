@@ -32,11 +32,13 @@
     <string name="carbohydrate">คาร์โบไฮเดรต</string>
     <string name="kcal">kcal</string>
     <string name="quantity">ปริมาณ</string>
+    <string name="mili_gram">มิลลิกรัม</string>
     <string name="fast_food">fastFood</string>
     <string name="fruit">fruit</string>
     <string name="side_dish">sideDish</string>
     <string name="sweets">sweets</string>
     <string name="fat">ไขมัน</string>
+    <string name="kilo_cal">กิโลแคลอรี</string>
     <string name="desc_food">น้ำหนักสุทธิที่บริโภค</string>
     <string name="desc_nutrition">ข้อมูลโภชนาการ (Nutrition Information)</string>
     <string name="sugar">น้ำตาล</string>

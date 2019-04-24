@@ -112,8 +112,8 @@ public class EatDetailActivity extends AbstractActivity implements SwipeRefreshL
             binding.tvType.setText(getContext().getString(R.string.soduim));
             binding.tvLimit.setText(food.getSoduim() + " " + getContext().getString(R.string.mili_grams));
         }else if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.obesity))){
-            binding.tvType.setText(getContext().getString(R.string.fat));
-            binding.tvLimit.setText(food.getFat() + " " + getContext().getString(R.string.grams));
+            binding.tvType.setText(getContext().getString(R.string.quantity));
+            binding.tvLimit.setText(food.getKcal() + " " + getContext().getString(R.string.kcal));
         }else {
             binding.tvType.setText(getContext().getString(R.string.carbohydrate));
             binding.tvLimit.setText(food.getCarbohydrate() +  " " + getContext().getString(R.string.grams));

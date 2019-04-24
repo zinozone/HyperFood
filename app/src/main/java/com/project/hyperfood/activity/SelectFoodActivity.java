@@ -14,6 +14,7 @@ import com.project.hyperfood.R;
 import com.project.hyperfood.adapter.FoodAdapter;
 import com.project.hyperfood.application.HyperFoodApplication;
 import com.project.hyperfood.common.model.Food;
+import com.project.hyperfood.common.preferences.HPF;
 import com.project.hyperfood.common.utils.FontUtil;
 import com.project.hyperfood.databinding.ActivitySelectFoodBinding;
 
@@ -71,7 +72,13 @@ public class SelectFoodActivity extends AbstractActivity implements SwipeRefresh
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Food food = snapshot.getValue(Food.class);
                     food.setFoodType(foodType);
-                    foodTypes.add(food);
+                    if (HyperFoodApplication.isRecommend){
+                        if (checkCanAdd(food)){
+                            foodTypes.add(food);
+                        }
+                    }else {
+                        foodTypes.add(food);
+                    }
                 }
 
                 data = foodTypes;
@@ -90,6 +97,19 @@ public class SelectFoodActivity extends AbstractActivity implements SwipeRefresh
 
         };
         foodRef.addListenerForSingleValueEvent(valueEventListener);
+    }
+
+    private boolean checkCanAdd(Food food){
+        if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.hypertension))){
+            return Float.parseFloat(food.getSoduim()) <= getResources().getInteger(R.integer.sodium_potion);
+        }else if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.obesity))){
+            int kcal = HPF.getInstance().getUser().getGender().equals(getString(R.string.male)) ?
+                    getResources().getInteger(R.integer.male_kcal_potion) :
+                    getResources().getInteger(R.integer.female_kcal_potion);
+            return Float.parseFloat(food.getKcal()) <= kcal;
+        }else {
+            return Float.parseFloat(food.getCarbohydrate()) <= getResources().getInteger(R.integer.carbohydrate_potion);
+        }
     }
 
     @Override

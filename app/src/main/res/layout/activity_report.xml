@@ -103,21 +103,155 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="30dp"
                     app:cardCornerRadius="10dp">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                        <com.github.mikephil.charting.charts.PieChart
-                            android:id="@+id/chartView"
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
 
-                    </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/carbohydrate"
+                                android:textColor="@color/colorBlack"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:fontFamily="@font/lamoon_regular"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/caboValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0/0 กรัม"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:textColor="@color/colorBlack"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/lamoon_regular"
+                                android:textSize="20sp"/>
+
+                        </RelativeLayout>
+
+                        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                            android:id="@+id/progressCabo"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            app:rcProgress="0"
+                            app:rcSecondaryProgress="0"
+                            app:rcMax="100"
+                            app:rcRadius="10dp"
+                            app:rcBackgroundPadding="3dp"
+                            app:rcReverse="false"
+                            android:layout_marginTop="10dp"
+                            app:rcProgressColor="@color/caboProgress"
+                            app:rcSecondaryProgressColor="@color/caboProgressDark"
+                            app:rcBackgroundColor="@color/colorGrayLight" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/soduim"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:textColor="@color/colorBlack"
+                                android:fontFamily="@font/lamoon_regular"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/sodiumValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0/0 มิลลิกรัม"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:textColor="@color/colorBlack"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/lamoon_regular"
+                                android:textSize="20sp"/>
+
+                        </RelativeLayout>
+
+                        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                            android:id="@+id/progressSodium"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            app:rcProgress="0"
+                            app:rcSecondaryProgress="0"
+                            app:rcMax="100"
+                            app:rcRadius="10dp"
+                            app:rcBackgroundPadding="3dp"
+                            app:rcReverse="false"
+                            android:layout_marginTop="10dp"
+                            app:rcProgressColor="@color/sodiumProgress"
+                            app:rcSecondaryProgressColor="@color/sodiumProgressDark"
+                            app:rcBackgroundColor="@color/colorGrayLight" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="แคลอรี่"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:textColor="@color/colorBlack"
+                                android:fontFamily="@font/lamoon_regular"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/kcalValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0/0 กิโลแคลอรี"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:textColor="@color/colorBlack"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/lamoon_regular"
+                                android:textSize="20sp"/>
+
+                        </RelativeLayout>
+
+                        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                            android:id="@+id/progressKcal"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            app:rcProgress="0"
+                            app:rcSecondaryProgress="0"
+                            app:rcMax="100"
+                            app:rcRadius="10dp"
+                            app:rcBackgroundPadding="3dp"
+                            android:layout_marginBottom="20dp"
+                            app:rcReverse="false"
+                            android:layout_marginTop="10dp"
+                            app:rcProgressColor="@color/kcalProgress"
+                            app:rcSecondaryProgressColor="@color/kcalProgressDark"
+                            app:rcBackgroundColor="@color/colorGrayLight" />
+
+                    </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 

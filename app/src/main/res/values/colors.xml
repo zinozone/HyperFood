@@ -10,4 +10,13 @@
     <color name="colorGrayLight">#DFDDDD</color>
     <color name="transparent">#00E73B43</color>
     <color name="bg_transparent">#0F03A9F4</color>
+
+    <color name="caboProgress">#3554FD</color>
+    <color name="caboProgressDark">#2C44CC</color>
+
+    <color name="sodiumProgress">#FFEB3B</color>
+    <color name="sodiumProgressDark">#D6C531</color>
+
+    <color name="kcalProgress">#95DF40</color>
+    <color name="kcalProgressDark">#72A03D</color>
 </resources>

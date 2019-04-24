@@ -1,20 +1,11 @@
 package com.project.hyperfood.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,19 +22,17 @@ import com.project.hyperfood.common.utils.DateTimeUtils;
 import com.project.hyperfood.common.utils.FontUtil;
 import com.project.hyperfood.databinding.ActivityReportBinding;
 
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
+import java.text.DecimalFormat;
+
 import static com.project.hyperfood.application.HyperFoodApplication.USER_FOOD;
 
-public class ReportActivity extends AbstractActivity implements OnChartValueSelectedListener {
+public class ReportActivity extends AbstractActivity{
 
     private ActivityReportBinding binding;
-    private float currentValue = 0;
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -57,8 +46,9 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         binding.tvDate.setText(DateTimeUtils.getCurrentDate());
 
         setClickEvent();
-        configChart();
         getFood();
+        setMaxProgress();
+        updateValue();
     }
 
     private void setClickEvent(){
@@ -70,91 +60,19 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         });
         binding.btnRecommend.setOnClickListener(v -> {
             HyperFoodApplication.menuTitle = getString(R.string.recommend_food);
+            HyperFoodApplication.isRecommend = true;
             startActivity(new Intent(getContext(), SelectFoodTypeActivity.class));
             overridePendingTransitionEnter();
         });
         binding.btnSave.setOnClickListener(v -> {
             HyperFoodApplication.menuTitle = getString(R.string.all_food);
+            HyperFoodApplication.isRecommend = false;
             startActivity(new Intent(getContext(), SelectFoodTypeActivity.class));
             overridePendingTransitionEnter();
         });
-    }
-
-    private void configChart(){
-        binding.chartView.setUsePercentValues(true);
-        binding.chartView.getDescription().setEnabled(false);
-        binding.chartView.setExtraOffsets(5, 10, 5, 5);
-
-        binding.chartView.setDragDecelerationFrictionCoef(0.95f);
-        binding.chartView.setCenterTextTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
-        binding.chartView.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
-
-        binding.chartView.setDrawHoleEnabled(true);
-        binding.chartView.setHoleColor(Color.WHITE);
-
-        binding.chartView.setTransparentCircleColor(Color.WHITE);
-        binding.chartView.setTransparentCircleAlpha(110);
-
-        binding.chartView.setHoleRadius(17f);
-        binding.chartView.setTransparentCircleRadius(20f);
-
-        binding.chartView.setDrawCenterText(true);
-
-        binding.chartView.setRotationAngle(0);
-        // enable rotation of the chart by touch
-        binding.chartView.setRotationEnabled(true);
-        binding.chartView.setHighlightPerTapEnabled(true);
-
-        // chart.setUnit(" €");
-        // chart.setDrawUnitsInChart(true);
-
-        // add a selection listener
-        binding.chartView.setOnChartValueSelectedListener(this);
-
-        binding.chartView.animateY(1400, Easing.EaseInOutQuad);
-        // chart.spin(2000, 0, 360);
-
-        Legend l = binding.chartView.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.VERTICAL);
-        l.setDrawInside(false);
-        l.setEnabled(false);
-    }
-
-    private void setData() {
-        ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(getLimit(), "เหมาสม"));
-        entries.add(new PieEntry(currentValue, "ไม่เหมาะสม"));
-
-        PieDataSet dataSet = new PieDataSet(entries, "");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
-
-        // add a lot of colors
-        ArrayList<Integer> colors = new ArrayList<>();
-        colors.add( Color.rgb(3, 169, 244));
-        colors.add( Color.rgb(252, 92, 39));
-        dataSet.setColors(colors);
-
-        dataSet.setValueLinePart1OffsetPercentage(80.f);
-        dataSet.setValueLinePart1Length(0.2f);
-        dataSet.setValueLinePart2Length(0.4f);
-        //dataSet.setUsingSliceColorAsValueLineColor(true);
-        //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-        dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-        PieData data = new PieData(dataSet);
-        data.setValueTextSize(11f);
-        data.setValueTextColor(Color.BLACK);
-        data.setValueTypeface(FontUtil.getFont(getAssets(), FontUtil.LAMMOON_BOLD));
-        data.setValueTextSize(18);
-        data.setValueFormatter(new PercentFormatter());
-        data.setDrawValues(false);
-        binding.chartView.setData(data);
-        // undo all highlights
-        binding.chartView.highlightValues(null);
-
-        binding.chartView.invalidate();
+        binding.progressCabo.setOnClickListener(v -> openEatDetail());
+        binding.progressKcal.setOnClickListener(v -> openEatDetail());
+        binding.progressSodium.setOnClickListener(v -> openEatDetail());
     }
 
     protected void selectDate(){
@@ -182,17 +100,11 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         }, 2000);
     }
 
-    @Override
-    public void onValueSelected(Entry e, Highlight h) {
+    public void openEatDetail() {
         Intent intent = new Intent(getContext(), EatDetailActivity.class);
         intent.putExtra(EatDetailActivity.EXTRA_DATE, binding.tvDate.getText().toString());
         startActivity(intent);
         overridePendingTransitionEnter();
-    }
-
-    @Override
-    public void onNothingSelected() {
-
     }
 
     private void getFood(){
@@ -203,35 +115,50 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                currentValue = 0;
+                float sodium = 0;
+                float cabo = 0;
+                float kcal = 0;
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_morning)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    currentValue += getFoodValue(food);
+                    sodium += Float.parseFloat(food.getSoduim());
+                    cabo += Float.parseFloat(food.getCarbohydrate());
+                    kcal += Float.parseFloat(food.getKcal());
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_noon)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    currentValue += getFoodValue(food);
+                    sodium += Float.parseFloat(food.getSoduim());
+                    cabo += Float.parseFloat(food.getCarbohydrate());
+                    kcal += Float.parseFloat(food.getKcal());
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_evening)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    currentValue += getFoodValue(food);
+                    sodium += Float.parseFloat(food.getSoduim());
+                    cabo += Float.parseFloat(food.getCarbohydrate());
+                    kcal += Float.parseFloat(food.getKcal());
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_night)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    currentValue += getFoodValue(food);
+                    sodium += Float.parseFloat(food.getSoduim());
+                    cabo += Float.parseFloat(food.getCarbohydrate());
+                    kcal += Float.parseFloat(food.getKcal());
                 }
 
-                setData();
+                setProgress(binding.progressCabo, cabo);
+                setProgress(binding.progressKcal, kcal);
+                setProgress(binding.progressSodium, sodium);
+                updateValue();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                currentValue = 0;
-                setData();
+                setProgress(binding.progressCabo, 0);
+                setProgress(binding.progressKcal, 0);
+                setProgress(binding.progressSodium, 0);
+                updateValue();
                 Toast.makeText(getContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
@@ -239,23 +166,22 @@ public class ReportActivity extends AbstractActivity implements OnChartValueSele
         foodRef.addListenerForSingleValueEvent(valueEventListener);
     }
 
-    private int getLimit(){
-        if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.hypertension))){
-            return getResources().getInteger(R.integer.sodium);
-        }else if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.obesity))){
-            return getResources().getInteger(R.integer.fat);
-        }else {
-            return getResources().getInteger(R.integer.carbohydrate);
-        }
+    private void setMaxProgress(){
+        binding.progressCabo.setMax(getResources().getInteger(R.integer.carbohydrate_day));
+        binding.progressSodium.setMax(getResources().getInteger(R.integer.sodium_day));
+        binding.progressKcal.setMax(HPF.getInstance().getUser().getGender().equals(getString(R.string.male)) ?
+                getResources().getInteger(R.integer.male_kcal_day) :
+                getResources().getInteger(R.integer.female_kcal_day));
     }
 
-    private float getFoodValue(Food food){
-        if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.hypertension))){
-            return Float.parseFloat(food.getSoduim());
-        }else if (HPF.getInstance().getUser().getCongenitalDisease().equals(getContext().getString(R.string.obesity))){
-            return Float.parseFloat(food.getFat());
-        }else {
-            return Float.parseFloat(food.getCarbohydrate());
-        }
+    private void setProgress(RoundCornerProgressBar progressBar, float progress){
+        progressBar.setProgress(progress);
+    }
+
+    private void updateValue(){
+        DecimalFormat df = new DecimalFormat("#.##");
+        binding.caboValue.setText(String.format("%s/%.0f %s", df.format(binding.progressCabo.getProgress()), binding.progressCabo.getMax(), getString(R.string.carbohydrate)));
+        binding.sodiumValue.setText(String.format("%s/%.0f %s", df.format(binding.progressSodium.getProgress()), binding.progressSodium.getMax(), getString(R.string.mili_gram)));
+        binding.kcalValue.setText(String.format("%s/%.0f %s", df.format(binding.progressKcal.getProgress()), binding.progressKcal.getMax(), getString(R.string.kilo_cal)));
     }
 }

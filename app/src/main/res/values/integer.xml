@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="sodium">2000</integer>
-    <integer name="fat">65</integer>
-    <integer name="carbohydrate">135</integer>
+    <integer name="sodium_day">2400</integer>
+    <integer name="sodium_potion">800</integer>
+    <integer name="male_kcal_day">1800</integer>
+    <integer name="male_kcal_potion">600</integer>
+    <integer name="female_kcal_day">1500</integer>
+    <integer name="female_kcal_potion">500</integer>
+    <integer name="carbohydrate_day">135</integer>
+    <integer name="carbohydrate_potion">45</integer>
 </resources>

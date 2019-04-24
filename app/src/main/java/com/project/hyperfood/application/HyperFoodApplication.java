@@ -13,6 +13,7 @@ public class HyperFoodApplication extends Application {
     public static final String FOOD = "food";
     public static final String USER_FOOD = "userFood";
     public static String menuTitle;
+    public static boolean isRecommend = false;
 
     @Override
     public void onCreate() {
