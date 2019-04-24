@@ -17,6 +17,7 @@ public class Food implements Parcelable {
     private String sugars;
     private String foodType;
     private int dayTime;
+    private String kcal;
 
     public Food() {
     }
@@ -34,6 +35,7 @@ public class Food implements Parcelable {
         sugars = in.readString();
         foodType = in.readString();
         dayTime = in.readInt();
+        kcal = in.readString();
     }
 
     public static final Creator<Food> CREATOR = new Creator<Food>() {
@@ -144,6 +146,14 @@ public class Food implements Parcelable {
         this.dayTime = dayTime;
     }
 
+    public String getKcal() {
+        return kcal;
+    }
+
+    public void setKcal(String kcal) {
+        this.kcal = kcal;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -163,5 +173,6 @@ public class Food implements Parcelable {
         dest.writeString(sugars);
         dest.writeString(foodType);
         dest.writeInt(dayTime);
+        dest.writeString(kcal);
     }
 }

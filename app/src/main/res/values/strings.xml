@@ -30,6 +30,8 @@
     <string name="hypertension">ความดัน</string>
     <string name="soduim">โซเดียม</string>
     <string name="carbohydrate">คาร์โบไฮเดรต</string>
+    <string name="kcal">kcal</string>
+    <string name="quantity">ปริมาณ</string>
     <string name="fast_food">fastFood</string>
     <string name="fruit">fruit</string>
     <string name="side_dish">sideDish</string>
