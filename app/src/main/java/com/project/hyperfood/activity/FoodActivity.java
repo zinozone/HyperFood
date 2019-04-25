@@ -56,6 +56,7 @@ public class FoodActivity extends AbstractActivity{
         binding.tvCaboGrams.setText(food.getCarbohydrate() + " " + getString(R.string.grams));
         binding.tvSugarGrams.setText(food.getSugars() + " " + getString(R.string.grams));
         binding.tvProteinGrams.setText(food.getProtein() + " " + getString(R.string.grams));
+        binding.tvKcalGrams.setText(food.getKcal() + " " + getString(R.string.kilo_cal));
     }
 
     private void setClickEvent(){

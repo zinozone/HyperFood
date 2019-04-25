@@ -63,6 +63,12 @@ public class ReportActivity extends AbstractActivity{
         updateValue();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkValue();
+    }
+
     private void setClickEvent(){
         binding.btnDate.setOnClickListener(v -> selectDate());
         binding.tvDate.setOnClickListener(v -> selectDate());

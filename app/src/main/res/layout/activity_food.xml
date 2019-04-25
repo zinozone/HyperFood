@@ -284,6 +284,38 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
+                                android:layout_weight="2"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:id="@+id/tvKcal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:textColor="@color/colorBlack"
+                                    android:text="แคลลอรี่"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_weight="1"/>
+
+                                <TextView
+                                    android:id="@+id/tvKcalGrams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/lamoon_regular"
+                                    android:text="1 กิโลแคลลอรี่"
+                                    android:layout_marginEnd="40dp"
+                                    android:gravity="right"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
                                 android:layout_marginTop="50dp"
                                 android:layout_marginBottom="20dp"
                                 android:layout_weight="4">
