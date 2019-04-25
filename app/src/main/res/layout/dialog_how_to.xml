@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_alert">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:text=""
+                    android:textColor="@color/colorWhite"
+                    android:fontFamily="@font/lamoon_bold"
+                    android:textSize="35sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvH1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/lamoon_bold"
+                    android:textColor="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/tvP1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lamoon_regular"
+                    android:textColor="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/tvH2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/lamoon_bold"
+                    android:textColor="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/tvP2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lamoon_regular"
+                    android:textColor="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/tvH3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/lamoon_bold"
+                    android:textColor="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/tvP3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lamoon_regular"
+                    android:textColor="@color/colorWhite"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <Button
+                            android:id="@+id/btnDismiss"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="ฉันเข้าใจแล้ว"
+                            android:background="@drawable/btn_cancel"
+                            android:textColor="@color/colorWhite"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/lamoon_bold"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

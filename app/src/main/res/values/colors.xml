@@ -10,6 +10,7 @@
     <color name="colorGrayLight">#DFDDDD</color>
     <color name="transparent">#00E73B43</color>
     <color name="bg_transparent">#0F03A9F4</color>
+    <color name="bg_alert">#41000000</color>
 
     <color name="caboProgress">#3554FD</color>
     <color name="caboProgressDark">#2C44CC</color>

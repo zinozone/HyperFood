@@ -71,6 +71,7 @@
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:scaleType="fitXY"
+                        android:visibility="gone"
                         android:layout_marginTop="2dp"
                         android:layout_marginStart="2dp"
                         android:src="@drawable/red_dot"/>

@@ -10,7 +10,7 @@ public class DateTimeUtils {
     public static final int NOON = 2;
     public static final int EVENING = 3;
     public static final int NIGHT = 4;
-
+    public static final String PREF_RED_DOT = "red-dot";
 
     public static String getCurrentDateTime(){
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -42,6 +42,26 @@ public class DateTimeUtils {
     public static String getTimeSaveFood(){
         SimpleDateFormat format = new SimpleDateFormat("HHmmss");
         return format.format(new Date());
+    }
+
+    public static String getPrefCarbohydrate(){
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        return "carbohydrate"+format.format(new Date());
+    }
+
+    public static String getPrefSodium(){
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        return "sodium"+format.format(new Date());
+    }
+
+    public static String getPrefKcal(){
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        return "kcal"+format.format(new Date());
+    }
+
+    public static String getPrefRedDot(){
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        return PREF_RED_DOT+format.format(new Date());
     }
 
     public static int getDayTime(){
