@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
-                            android:focusable="false"
+                            android:enabled="false"
                             android:background="@color/transparent"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"/>
@@ -114,7 +114,7 @@
                             android:hint="@string/fname"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
-                            android:focusable="false"
+                            android:enabled="false"
                             android:background="@color/transparent"
                             android:inputType="text"/>
 
@@ -134,17 +134,74 @@
                             android:hint="@string/lname"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
-                            android:focusable="false"
+                            android:enabled="false"
                             android:background="@color/transparent"
                             android:inputType="text"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/viewDisease"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:visibility="gone"
+                        android:background="@drawable/edt_bg_white">
+
+                        <Spinner
+                            android:id="@+id/spinnerDisease"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@color/transparent" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_arrow_drop_down"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:scaleType="fitXY"
+                            android:layout_marginRight="10dp"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/viewGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:visibility="gone"
+                        android:background="@drawable/edt_bg_white">
+
+                        <Spinner
+                            android:id="@+id/spinnerGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@color/transparent" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_arrow_drop_down"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:scaleType="fitXY"
+                            android:layout_marginRight="10dp"/>
+
+                    </RelativeLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
                         android:layout_marginTop="10dp"
                         android:padding="10dp"
+                        android:id="@+id/viewInputDisease"
                         android:background="@drawable/edt_bg_white">
 
                         <EditText
@@ -154,7 +211,7 @@
                             android:hint="@string/disease"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
-                            android:focusable="false"
+                            android:enabled="false"
                             android:background="@color/transparent"
                             android:inputType="text"/>
 
@@ -165,6 +222,7 @@
                         android:layout_height="65dp"
                         android:layout_marginTop="10dp"
                         android:padding="10dp"
+                        android:id="@+id/viewInputGender"
                         android:background="@drawable/edt_bg_white">
 
                         <EditText
@@ -174,7 +232,7 @@
                             android:hint="@string/gender"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
-                            android:focusable="false"
+                            android:enabled="false"
                             android:background="@color/transparent"
                             android:inputType="text"/>
 
@@ -185,6 +243,7 @@
                         android:layout_height="65dp"
                         android:layout_marginTop="10dp"
                         android:padding="10dp"
+                        android:layout_marginBottom="20dp"
                         android:background="@drawable/edt_bg_white">
 
                         <EditText
@@ -194,11 +253,50 @@
                             android:hint="@string/age"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
-                            android:focusable="false"
+                            android:enabled="false"
                             android:background="@color/transparent"
                             android:inputType="number"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:text="แก้ไขข้อมูล"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="23sp"
+                        android:fontFamily="@font/lamoon_regular"
+                        android:background="@drawable/btn_edit"/>
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="บันทึก"
+                        android:visibility="gone"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="23sp"
+                        android:fontFamily="@font/lamoon_regular"
+                        android:background="@drawable/btn_save"/>
+
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="ยกเลิก"
+                        android:visibility="gone"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="23sp"
+                        android:fontFamily="@font/lamoon_regular"
+                        android:background="@drawable/btn_cancel"/>
 
                 </LinearLayout>
 

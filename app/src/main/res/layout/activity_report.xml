@@ -103,6 +103,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/bg_round_white_circle">
 
                     <TextView
@@ -145,6 +146,18 @@
                         android:padding="10dp"
                         android:gravity="center"
                         android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="กราฟแสดงข้อมูลการกินต่อวัน"
+                            android:textColor="@color/colorPrimary"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:fontFamily="@font/lamoon_bold"
+                            android:textSize="23sp"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -283,59 +296,59 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_menu"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:elevation="4dp"
+                    android:weightSum="5"
+                    android:layout_marginRight="8dp">
+
+                    <LinearLayout
+                        android:layout_width="3dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:background="#e7e7e7"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="2"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/btnRecommend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="25sp"
+                            android:gravity="center"
+                            android:text="แนะนำ"/>
+
+                        <TextView
+                            android:id="@+id/btnSave"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="25sp"
+                            android:gravity="center"
+                            android:text="บันทึก"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
             </LinearLayout>
 
         </ScrollView>
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:background="@drawable/bg_menu"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="8dp"
-            android:elevation="4dp"
-            android:weightSum="5"
-            android:layout_marginRight="8dp">
-
-            <LinearLayout
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:background="#e7e7e7"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="2"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/btnRecommend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="25sp"
-                    android:gravity="center"
-                    android:text="แนะนำ"/>
-
-                <TextView
-                    android:id="@+id/btnSave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="25sp"
-                    android:gravity="center"
-                    android:text="บันทึก"/>
-
-            </LinearLayout>
-
-        </RelativeLayout>
 
     </RelativeLayout>
 

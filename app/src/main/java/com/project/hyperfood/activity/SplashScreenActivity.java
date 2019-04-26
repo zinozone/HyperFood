@@ -78,7 +78,7 @@ public class SplashScreenActivity extends AppCompatActivity implements  Animator
     }
 
     private void getUser(String uid){
-        DatabaseReference diseaseRef = FirebaseDatabase.getInstance().getReference(USER).child(uid);
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference(USER).child(uid);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -97,6 +97,6 @@ public class SplashScreenActivity extends AppCompatActivity implements  Animator
             }
 
         };
-        diseaseRef.addListenerForSingleValueEvent(valueEventListener);
+        userRef.addListenerForSingleValueEvent(valueEventListener);
     }
 }
