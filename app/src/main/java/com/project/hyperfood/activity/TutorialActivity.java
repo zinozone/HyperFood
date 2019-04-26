@@ -22,7 +22,7 @@ public class TutorialActivity extends AbstractActivity{
 
     private ActivityTutorialBinding binding;
     private int[] tutorial = {
-            R.drawable.tutorial_1,
+            R.drawable.tutorial_1_1,
             R.drawable.tutorial_2,
             R.drawable.tutorial_3,
             R.drawable.tutorial_4,
