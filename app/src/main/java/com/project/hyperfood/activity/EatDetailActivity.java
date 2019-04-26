@@ -58,22 +58,22 @@ public class EatDetailActivity extends AbstractActivity implements SwipeRefreshL
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_morning)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewMorning, food);
+                    addView(binding.viewMorning, food, snapshot.getKey(), getString(R.string.txt_morning));
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_noon)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewNoon, food);
+                    addView(binding.viewNoon, food, snapshot.getKey(), getString(R.string.txt_noon));
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_evening)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewEvening, food);
+                    addView(binding.viewEvening, food, snapshot.getKey(), getString(R.string.txt_evening));
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_night)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewNight, food);
+                    addView(binding.viewNight, food, snapshot.getKey(), getString(R.string.txt_night));
                 }
             }
 
@@ -87,12 +87,27 @@ public class EatDetailActivity extends AbstractActivity implements SwipeRefreshL
         foodRef.addListenerForSingleValueEvent(valueEventListener);
     }
 
-    private void addView(ViewGroup view, Food food){
+    private void addView(ViewGroup view, Food food, String key, String dayTime){
         LayoutInflater layoutInflater = LayoutInflater.from(view.getContext());
         ItemFoodDetailBinding foodDetailBinding = ItemFoodDetailBinding.inflate(layoutInflater, view, false);
         bindFood(foodDetailBinding, food);
         View rowView = foodDetailBinding.getRoot();
         view.addView(rowView, view.getChildCount());
+
+        foodDetailBinding.btnDelete.setOnClickListener(v -> {
+            view.removeView(rowView);
+            deleteFood(key, dayTime);
+        });
+    }
+
+    private void deleteFood(String key, String dayTime){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference foodRef = FirebaseDatabase.getInstance().getReference(USER_FOOD)
+                .child(user.getUid())
+                .child(DateTimeUtils.getDateSaveFood(date))
+                .child(dayTime)
+                .child(key);
+        foodRef.removeValue();
     }
 
     private void bindFood(ItemFoodDetailBinding binding, Food food){

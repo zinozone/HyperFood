@@ -51,6 +51,14 @@
             android:layout_marginTop="20dp"
             android:gravity="center">
 
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_delete_forever"/>
+
             <TextView
                 android:id="@+id/tvType"
                 android:layout_width="wrap_content"
