@@ -58,7 +58,6 @@ public class ReportActivity extends AbstractActivity{
         binding.redDot.setVisibility(preferences.getBoolean(DateTimeUtils.getPrefRedDot(), false) ? View.VISIBLE:View.GONE);
 
         setClickEvent();
-        getFood();
         setMaxProgress();
         updateValue();
     }
@@ -66,7 +65,7 @@ public class ReportActivity extends AbstractActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        checkValue();
+        getFood();
     }
 
     private void setClickEvent(){
