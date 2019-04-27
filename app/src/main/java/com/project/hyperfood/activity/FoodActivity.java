@@ -2,6 +2,7 @@ package com.project.hyperfood.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +31,8 @@ import static com.project.hyperfood.common.utils.DateTimeUtils.NOON;
 public class FoodActivity extends AbstractActivity{
 
     public static final String EXTRA_FOOD = "extra-food";
+    public static final String EXTRA_DETAIL = "extra-detail";
+    public static final String EXTRA_TIME = "extra-time";
 
     private ActivityFoodBinding binding;
     private Food food;
@@ -40,12 +43,25 @@ public class FoodActivity extends AbstractActivity{
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_food);
         food = getIntent().getParcelableExtra(EXTRA_FOOD);
+        boolean isButtonEnable = getIntent().getBooleanExtra(EXTRA_DETAIL, true);
+        int time = getIntent().getIntExtra(EXTRA_TIME, 0);
+
         if (food != null){
             setData();
         }
 
         setClickEvent();
         setDayTime();
+
+        if (!isButtonEnable){
+            binding.btnEvening.setEnabled(false);
+            binding.btnMorning.setEnabled(false);
+            binding.btnNoon.setEnabled(false);
+            binding.btnNight.setEnabled(false);
+            binding.btnSave.setVisibility(View.GONE);
+            binding.btnCancel.setVisibility(View.GONE);
+            setDayTime(time);
+        }
     }
 
     private void setData(){
@@ -78,6 +94,25 @@ public class FoodActivity extends AbstractActivity{
 
     private void setDayTime(){
         switch (DateTimeUtils.getDayTime()){
+            case MORNING:
+                setMorning();
+                break;
+            case NOON:
+                setNoon();
+                break;
+            case EVENING:
+                setEvening();
+                break;
+            case NIGHT:
+                setNight();
+                break;
+            default:
+                setMorning();
+        }
+    }
+
+    private void setDayTime(int time){
+        switch (time){
             case MORNING:
                 setMorning();
                 break;

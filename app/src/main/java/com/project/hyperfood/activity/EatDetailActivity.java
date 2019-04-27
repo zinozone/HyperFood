@@ -1,5 +1,6 @@
 package com.project.hyperfood.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,10 @@ import com.project.hyperfood.databinding.ActivityEatDetailBinding;
 import com.project.hyperfood.databinding.ItemFoodDetailBinding;
 
 import static com.project.hyperfood.application.HyperFoodApplication.USER_FOOD;
+import static com.project.hyperfood.common.utils.DateTimeUtils.EVENING;
+import static com.project.hyperfood.common.utils.DateTimeUtils.MORNING;
+import static com.project.hyperfood.common.utils.DateTimeUtils.NIGHT;
+import static com.project.hyperfood.common.utils.DateTimeUtils.NOON;
 
 public class EatDetailActivity extends AbstractActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -58,22 +63,22 @@ public class EatDetailActivity extends AbstractActivity implements SwipeRefreshL
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_morning)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewMorning, food, snapshot.getKey(), getString(R.string.txt_morning));
+                    addView(binding.viewMorning, food, snapshot.getKey(), getString(R.string.txt_morning), MORNING);
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_noon)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewNoon, food, snapshot.getKey(), getString(R.string.txt_noon));
+                    addView(binding.viewNoon, food, snapshot.getKey(), getString(R.string.txt_noon), NOON);
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_evening)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewEvening, food, snapshot.getKey(), getString(R.string.txt_evening));
+                    addView(binding.viewEvening, food, snapshot.getKey(), getString(R.string.txt_evening), EVENING);
                 }
 
                 for (DataSnapshot snapshot : dataSnapshot.child(getString(R.string.txt_night)).getChildren()){
                     Food food = snapshot.getValue(Food.class);
-                    addView(binding.viewNight, food, snapshot.getKey(), getString(R.string.txt_night));
+                    addView(binding.viewNight, food, snapshot.getKey(), getString(R.string.txt_night), NIGHT);
                 }
             }
 
@@ -87,7 +92,7 @@ public class EatDetailActivity extends AbstractActivity implements SwipeRefreshL
         foodRef.addListenerForSingleValueEvent(valueEventListener);
     }
 
-    private void addView(ViewGroup view, Food food, String key, String dayTime){
+    private void addView(ViewGroup view, Food food, String key, String dayTime, int time){
         LayoutInflater layoutInflater = LayoutInflater.from(view.getContext());
         ItemFoodDetailBinding foodDetailBinding = ItemFoodDetailBinding.inflate(layoutInflater, view, false);
         bindFood(foodDetailBinding, food);
@@ -97,6 +102,14 @@ public class EatDetailActivity extends AbstractActivity implements SwipeRefreshL
         foodDetailBinding.btnDelete.setOnClickListener(v -> {
             view.removeView(rowView);
             deleteFood(key, dayTime);
+        });
+
+        rowView.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), FoodActivity.class);
+            intent.putExtra(FoodActivity.EXTRA_FOOD, food);
+            intent.putExtra(FoodActivity.EXTRA_DETAIL, false);
+            intent.putExtra(FoodActivity.EXTRA_TIME, time);
+            getContext().startActivity(intent);
         });
     }
 
